@@ -1,10 +1,10 @@
+import os
 import requests
 from datetime import datetime
 from PIL import Image, ImageDraw
 from apscheduler.schedulers.background import BackgroundScheduler
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 import pytz
-import os
 
 # Token de acceso del bot de Telegram
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
@@ -49,12 +49,13 @@ def set_new_time(update, context):
         update.message.reply_text("Por favor, ingresa la hora en el formato HH:MM.")
 
 def send_image(chat_id):
+    file_path = os.path.join(os.path.dirname(__file__), 'progress_bar.jpg')
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendPhoto"
-    files = {'photo': open('progress_bar.jpg', 'rb')}  # Cambia la ruta del archivo si es necesario
+    files = {'photo': open(file_path, 'rb')}
     data = {'chat_id': chat_id}
-    
+
     response = requests.post(url, files=files, data=data)
-    
+
     print(f"Respuesta de Telegram API para el chat ID {chat_id}:", response.text)
 
 def send_progress_bar_image():
@@ -114,3 +115,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
