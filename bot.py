@@ -19,7 +19,7 @@ def start(update, context):
     user_scheduled_times[chat_id] = {'time': datetime.now(pytz.timezone('America/New_York')).replace(hour=12, minute=0, second=0, microsecond=0),
                                      'image_sent': False}
 
-    update.message.reply_text(f"Bienvenido al bot. Tu chat ID es {chat_id}. La hora actual de envío es {user_scheduled_times[chat_id]['time'].strftime('%H:%M')}.")
+    update.message.reply_text(f"Bienvenido al bot. Por defecto la hora de envío es {user_scheduled_times[chat_id]['time'].strftime('%H:%M')}. Use /edit para editar la hora.")
 
 def edit(update, context):
     chat_id = update.message.chat_id
@@ -85,7 +85,7 @@ def create_progress_bar_image():
 
     draw.rectangle([0, 0, progress_percentage * 4, 40], fill='green')
 
-    draw.text((10, 10), f"Progreso del Año: {progress_percentage:.2f}%", fill='black')
+    draw.text((10, 10), f"{current_date.year}% is {progress_percentage:.2f}% complete", fill='black')
 
     image.save("progress_bar.jpg")  # Cambia la ruta del archivo si es necesario
 
