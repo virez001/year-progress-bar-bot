@@ -2,4 +2,4 @@ Pillow
 apscheduler
 python-telegram-bot==13.7
 pytz
-
+requests
