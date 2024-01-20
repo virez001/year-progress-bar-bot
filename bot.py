@@ -4,9 +4,10 @@ from PIL import Image, ImageDraw
 from apscheduler.schedulers.background import BackgroundScheduler
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 import pytz
+import os
 
 # Token de acceso del bot de Telegram
-TELEGRAM_BOT_TOKEN = "6828018832:AAH3JYpJWmmOEYTuEYOI4iLA4QgP7pJFOZw"
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 
 # Lista de usuarios y sus horas de envío programadas
 user_scheduled_times = {}
