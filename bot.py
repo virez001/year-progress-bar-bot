@@ -85,7 +85,8 @@ def create_progress_bar_image():
 
     draw.rectangle([0, 0, progress_percentage * 4, 40], fill='green')
 
-    draw.text((10, 10), f"{current_date.year}% is {progress_percentage:.2f}% complete", fill='black')
+    draw.text((10, 10), f"{current_date.year} is {progress_percentage:.2f} % complete", fill='black')
+
 
     image.save("progress_bar.jpg")  # Cambia la ruta del archivo si es necesario
 
